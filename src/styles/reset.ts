@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     
     font-size: 1.6rem;
-    color: ${({ theme }) => theme.colors.light};
+    color: ${({ theme }) => theme.colors.dark};
     border: none;
     font-family: "Montserrat", "Roboto", sans-serif;
     
