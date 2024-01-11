@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    min-height: 100vh;
-
+export const Container = styled.main`
     h1 {
+        margin-top: 0.8rem;
         font-size: 1.4rem;
+        text-align: center;
+        color: lightgray;
     }
 
     .gridCards {

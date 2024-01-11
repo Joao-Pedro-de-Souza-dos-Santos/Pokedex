@@ -2,10 +2,20 @@
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../configs/api";
 import { Pokemon } from "../@types/pokemon";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function useQueryPokemonPage() {
-  async function getPokemonPage() {
-    const { data } = await API.get("/pokemon");
+  const [ page, setPage ] = useState(1);
+  const [ limit, setLimit ] = useState(30);
+  const [ totalPages, setTotalPages ] = useState(1);
+
+  const navigate = useNavigate();
+
+  async function getPokemonPage({ page = 1, limit = 30 }) {
+    const offset = (page - 1) * limit;
+
+    const { data } = await API.get(`/pokemon?limit=${limit}&offset=${offset}`);
 
     const pokemonPromisses = data.results.map(
       async (pokemon: { url: string }) => {
@@ -17,15 +27,31 @@ export function useQueryPokemonPage() {
 
     const pokemonData = await Promise.all(pokemonPromisses);  /*👈 Código Top Zeira { Promise.all }*/
 
+    const totalPokemon = data.count;
+    const totalPagesApi = Math.ceil(totalPokemon / limit);
+
+    if(totalPages != totalPagesApi) setTotalPages(totalPagesApi);
+
     return pokemonData as Pokemon[];
   }
 
+  function nextPage() {
+    setPage((prevValue) => prevValue + 1);
+    navigate(`?page=${page + 1}`);
+  }
+
+  function prevPage() {
+    setPage((prevValue) => prevValue - 1);
+    navigate(`?page=${page - 1}`);
+  }
+
   const query = useQuery({
-    queryKey: ["getPokemonPage"],
-    queryFn: getPokemonPage,
+    queryKey: ["getPokemonPage", page, limit],
+    queryFn: () => getPokemonPage({ page, limit }),
   });
 
   return {
-    ...query,
+    ...query, page, totalPages,
+    setLimit, nextPage, prevPage,
   };
 }

@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 
 export function Home() {
 
-    const { data, isLoading, error } = useQueryPokemonPage();
+    const { data, isLoading, error, 
+              nextPage, prevPage, page,
+              totalPages, 
+            } = useQueryPokemonPage();
+
     if(error) console.error();
     console.log(data);
     
@@ -26,6 +30,13 @@ export function Home() {
                         </Link>
                     );
                 })}
+            </div>
+
+            <div className="paginationComponent">
+                <button onClick={prevPage}> &lt; Anterior</button>
+
+                <span>{String(page).padStart( 2, "0" )} / {String(totalPages).padStart( 2, "0" )}</span>
+                <button onClick={nextPage}> Proxima &gt;</button>
             </div>
         </Container>
     );
