@@ -30,7 +30,7 @@ export function Header() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <section>
-          <label htmlFor="inputSearch">Buscar Pokemon</label>
+          <label htmlFor="inputSearch"></label>
 
           <input
             type="text"
