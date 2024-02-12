@@ -4,7 +4,6 @@ import { API } from "../configs/api";
 import { Pokemon } from "../@types/pokemon";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { SearchPage } from "../pages/SearchPage";
 
 export function useQueryPokemonPage() {
   const [ page, setPage ] = useState(1);
