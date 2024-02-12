@@ -1,6 +1,6 @@
 import { Container } from "./style";
 import page404 from "../../assets/page404.png"
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Page404() {
     const navigate = useNavigate();
