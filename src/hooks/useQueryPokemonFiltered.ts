@@ -2,7 +2,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { API } from "../configs/api";
 import { Pokemon } from "../@types/pokemon";
-import { useQueryPokemonPage } from "./useQueryPokemonPage";
 
   async function getPokemonFiltered(name: string) {
     const { data } = await API.get(`/pokemon?limit=100000&offset=0`);
