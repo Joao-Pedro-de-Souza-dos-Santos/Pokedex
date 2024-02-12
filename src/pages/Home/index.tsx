@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Container } from "./style";
 import { useQueryPokemonPage } from "../../hooks/useQueryPokemonPage";
 import { PokemonCard } from "../../components/PokemonCard";
