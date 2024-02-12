@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQueryPokemonDetails } from "../../hooks/useQueryPokemonDetails";
 import { Container } from "./style";
 import { CardType } from "../../components/CardType";
