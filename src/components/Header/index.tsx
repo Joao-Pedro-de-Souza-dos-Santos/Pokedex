@@ -1,4 +1,4 @@
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Container } from "./style";
 import pokemonLogo from "../../assets/pokemon-logo.png";
 import { SubmitHandler, useForm } from "react-hook-form";
